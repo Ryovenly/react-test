@@ -1,0 +1,28 @@
+{
+    "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+    "name": "Something",
+    "short_name": "Something",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "A readable Something News app.",
+    "icons": [
+      {
+        "src": "./assets/react.svg",
+        "sizes": "48x48",
+        "type": "image/svg"
+      },
+      {
+        "src": "images/vite.svg",
+        "sizes": "72x72",
+        "type": "image/svg"
+      }
+    ],
+    "related_applications": [
+      {
+        "platform": "play",
+        "url": "https://play.google.com/store/apps/details?id=cheeaun.hackerweb"
+      }
+    ]
+  }
+  
