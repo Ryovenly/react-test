@@ -23,20 +23,21 @@ function App() {
 
     }
 
-    if(coup == "pierre" && coupIA == "ciseaux"
-     || coup == "ciseaux" && coupIA == "papier"
-     || coup == "papier" && coupIA == "pierre"){
-        setState("Win");
-     }else if (coup == "pierre" && coupIA == "papier"
-     || coup == "ciseaux" && coupIA == "pierre"
-     || coup == "papier" && coupIA == "ciseaux"){
+    if(coup == "pierre" && coupIA == "ciseaux"){
+      setState("Win");
+    }else if(coup == "ciseaux" && coupIA == "papier"){
+      setState("Win");
+    }else if (coup == "papier" && coupIA == "pierre"){
+      setState("Win");
+    }else if (coup == "pierre" && coupIA == "papier"){
       setState("Lose");
-     }else{
+    }else if (coup == "ciseaux" && coupIA == "pierre"){
+      setState("Lose");
+    }else if (coup == "papier" && coupIA == "ciseaux"){
+      setState("Lose");
+    }else{
       setState("Draw");
      }
-
-
-    return <h1>Hello, {props.name}</h1>;
   }
  
 
@@ -60,7 +61,7 @@ function App() {
         </button>
 
         <button onClick={() => setCoup("papier")}>
-          papier {coup}
+          papier
         </button>
 
         <button onClick={() => setCoup("pierre")}>
