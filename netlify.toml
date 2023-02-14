@@ -1,6 +1,10 @@
+[build.environment]
+  NPM_FLAGS = "--prefix=/dev/null"
+  NODE_VERSION = "14"
+
 [build]
-  publish = "dist"
-  command = "pnpm run build"
+  publish = "docs/.vitepress/dist"
+  command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build && npx pnpm run docs:build"
 
 [[redirects]]
   from = "/*"
@@ -11,11 +15,3 @@
   for = "/manifest.webmanifest"
   [headers.values]
     Content-Type = "application/manifest+json"
-
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    cache-control = '''
-    max-age=31536000,
-    immutable
-    '''
