@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import { ToastProvider, useToasts } from 'react-toast-notifications';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,7 +10,8 @@ function App() {
   const [state, setState] = useState(0)
 
   function Play() {
-    var coupNumberIA = Math.random(2);
+    var coupNumberIA = Math.floor(Math.random() * 3);
+
     switch (coupNumberIA) {
       case 0:
         setCoupIA("pierre");
@@ -25,18 +27,25 @@ function App() {
 
     if(coup == "pierre" && coupIA == "ciseaux"){
       setState("Win");
+      alert("Win");
     }else if(coup == "ciseaux" && coupIA == "papier"){
       setState("Win");
+      alert("Win");
     }else if (coup == "papier" && coupIA == "pierre"){
       setState("Win");
+      alert("Win");
     }else if (coup == "pierre" && coupIA == "papier"){
       setState("Lose");
+      alert("Lose");
     }else if (coup == "ciseaux" && coupIA == "pierre"){
       setState("Lose");
+      alert("Lose");
     }else if (coup == "papier" && coupIA == "ciseaux"){
       setState("Lose");
+      alert("Lose");
     }else{
       setState("Draw");
+      alert("Draw");
      }
   }
  
@@ -44,15 +53,9 @@ function App() {
   return (
     <div className="App">
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+          <img src="/shifumi.png" className="logo" alt="Vite logo" />
       </div>
-      <h1>Vite + React</h1>
-      <div>{8+8}</div>
+      <h1>Shifumi !</h1>
       <div>Coup = {coup}</div>
 
       <div className="card">
@@ -72,20 +75,20 @@ function App() {
           ciseaux
         </button>
 
-        <button onClick={() => Play()}>
+        </div>
+
+<div>
+<button onClick={() => Play()}>
           Jouer 
         </button>
+</div>
+
 
         <div>{state}</div>
 
         <div>{coup}</div>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+
     </div>
   )
 }
