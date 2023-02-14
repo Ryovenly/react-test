@@ -3,6 +3,27 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 import { ToastProvider, useToasts } from 'react-toast-notifications';
 
+function notifyMe(message) {
+  if (!("Notification" in window)) {
+    // Check if the browser supports notifications
+    alert("This browser does not support desktop notification");
+  } else if (Notification.permission === "granted") {
+    // Check whether notification permissions have already been granted;
+    // if so, create a notification
+    const notification = new Notification(message);
+    // …
+  } else if (Notification.permission !== "denied") {
+    // We need to ask the user for permission
+    Notification.requestPermission().then((permission) => {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        const notification = new Notification(message);
+        // …
+      }
+    });
+  }
+}
+
 function App() {
   const [count, setCount] = useState(0)
   const [coup, setCoup] = useState(0)
@@ -11,6 +32,7 @@ function App() {
 
   function Play() {
     var coupNumberIA = Math.floor(Math.random() * 3);
+    notifyMe();
 
     switch (coupNumberIA) {
       case 0:
@@ -27,25 +49,25 @@ function App() {
 
     if(coup == "pierre" && coupIA == "ciseaux"){
       setState("Win");
-      alert("Win");
+      notifyMe("Win");
     }else if(coup == "ciseaux" && coupIA == "papier"){
       setState("Win");
-      alert("Win");
+      notifyMe("Win");
     }else if (coup == "papier" && coupIA == "pierre"){
       setState("Win");
-      alert("Win");
+      notifyMe("Win");
     }else if (coup == "pierre" && coupIA == "papier"){
       setState("Lose");
-      alert("Lose");
+      notifyMe("Lose");
     }else if (coup == "ciseaux" && coupIA == "pierre"){
       setState("Lose");
-      alert("Lose");
+      notifyMe("Lose");
     }else if (coup == "papier" && coupIA == "ciseaux"){
       setState("Lose");
-      alert("Lose");
+      notifyMe("Lose");
     }else{
       setState("Draw");
-      alert("Draw");
+      notifyMe("Draw");
      }
   }
  
